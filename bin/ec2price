@@ -20,7 +20,7 @@
 #
 
 import argparse
-import urllib2
+import urllib.request
 import json
 
 # Define colours for cli outputs
@@ -33,19 +33,19 @@ ENDC = '\033[0m'
 
 def getPricing(url):
 	try:
-		price_data = urllib2.urlopen(url).read()
+		price_data = urllib.reuqest.urlopen(url).read()
 	
-	except urllib2.HTTPError, e:
+	except urllib.error.HTTPError, e:
     		print HEADER + 'Error:' + ENDC
     		print e
     		print ''
 	    	return None
-	except urllib2.URLError, e:
+	except urllib.error.URLError, e:
 	    	print HEADER + 'Error:' + ENDC
     		print e
     		print ''
 	    	return None
-	except httplib.HTTPException, e:
+	except http.client.HTTPException, e:
 	    	print HEADER + 'Error:' + ENDC
 	    	print e
 	    	print ''
